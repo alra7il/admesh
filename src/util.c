@@ -165,14 +165,14 @@ stl_scale_versor(stl_file *stl, float versor[3]) {
 }
 
 void
-stl_scale(stl_file *stl, float factor) {
+stl_scale(stl_file *stl, float factor_x, float factor_y, float factor_z) {
   float versor[3];
 
   if (stl->error) return;
 
-  versor[0] = factor;
-  versor[1] = factor;
-  versor[2] = factor;
+  versor[0] = factor_x;
+  versor[1] = factor_y;
+  versor[2] = factor_z;
   stl_scale_versor(stl, versor);
 }
 

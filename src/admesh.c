@@ -38,7 +38,9 @@ main(int argc, char **argv) {
   float    x_trans;
   float    y_trans;
   float    z_trans;
-  float    scale_factor = 0;
+  float    scale_factor_x = 0;
+  float    scale_factor_y = 0;
+  float    scale_factor_z = 0;
   float    rotate_x_angle = 0;
   float    rotate_y_angle = 0;
   float    rotate_z_angle = 0;
@@ -195,7 +197,7 @@ main(int argc, char **argv) {
       break;
     case scale:
       scale_flag = 1;
-      scale_factor = atof(optarg);
+      sscanf(optarg, "%f,%f,%f", &scale_factor_x, &scale_factor_y, &scale_factor_z);
       break;
     case rotate_x:
       rotate_x_flag = 1;
@@ -287,8 +289,8 @@ redistribute it under certain conditions.  See the file COPYING for details.\n")
   }
 
   if(scale_flag) {
-    printf("Scaling by factor %f...\n", scale_factor);
-    stl_scale(&stl_in, scale_factor);
+//    printf("Scaling by factor %f...\n", scale_factor);
+    stl_scale(&stl_in, scale_factor_x, scale_factor_y, scale_factor_z);
   }
   if(translate_flag) {
     printf("Translating to %f, %f, %f ...\n", x_trans, y_trans, z_trans);
